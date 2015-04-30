@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users
 
+  root to: 'questions#index'
+
   # Example resource route with options:
   #   resources :products do
   #     member do
