@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 User.create(name: "ben", password: "test")
 Post.create(title: "blah", content: "laskdfj", user_id: 1)
 Post.create(title: "answer", content: "answer", user_id: 1, question_id: 1)
