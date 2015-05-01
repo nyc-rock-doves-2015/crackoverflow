@@ -6,4 +6,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :answers, class_name: "Post", foreign_key: "question_id"
   belongs_to :question, class_name: "Post"
+
+  validates :content, presence: true
 end

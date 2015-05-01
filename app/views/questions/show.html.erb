@@ -10,6 +10,7 @@
     <% end %>
   </div>
 </div>
+<%= render 'answer_form' %>
 <h3><%= @question.answers.count %> Answers</h3>
 <% @question.answers.each do |answer| %>
   <%= answer.content %>
