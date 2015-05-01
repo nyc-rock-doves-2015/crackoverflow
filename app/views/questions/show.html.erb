@@ -19,10 +19,11 @@
     <% end %>
   </div>
 </div>
-<%= render 'answer_form' %>
+
 <h3><%= @question.answers.count %> Answers</h3>
 <% @question.answers.each do |answer| %>
   <% next if answer.content.nil? %>
+  <hr>
   <%= answer.reputation %> reputation<br>
   <%= answer.content %>
   <div class="row">
@@ -31,7 +32,10 @@
       <% answer.comments.each do |comment| %>
         <%= comment.content %> - <%= comment.user.name %><br>
       <% end %>
+      <%= link_to "add comment", {action: :new, controller: :comments, answer_id: answer.id} %> <% get_flash %>
       <br>
     </div>
   </div>
 <% end %>
+
+<%= render 'answer_form' %>
