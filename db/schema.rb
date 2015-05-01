@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150430215808) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "title",                   null: false
+    t.string   "title"
     t.text     "content",                 null: false
     t.integer  "reputation",  default: 0
     t.integer  "user_id"
