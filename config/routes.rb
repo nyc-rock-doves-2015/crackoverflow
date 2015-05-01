@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'downvote', to: 'votes#downvote'
   end
 
-  resources :tags, only: :create
+  resources :tags, only: [:create, :show]
   resources :post_votes, only: [:create, :update]
   resources :comments, only: [:create, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
