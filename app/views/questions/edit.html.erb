@@ -1,7 +1,7 @@
-<%= form_for @question, url: questions_path, as: :question do |f| %>
+<%= form_for @question, url: question_path, as: :question do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
   <%= f.label :content %>
   <%= f.text_area :content %><br>
-  <%= f.submit "Post your question" %>
+  <%= f.submit %>
 <% end %>
