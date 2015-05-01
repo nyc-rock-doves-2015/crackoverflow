@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     post 'upvote', to: 'votes#upvote'
     post 'downvote', to: 'votes#downvote'
   end
-
-  resources :tags, only: :create
+  
   resources :post_votes, only: [:create, :update]
   resources :comments, only: [:create, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
