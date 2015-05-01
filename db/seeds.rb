@@ -1,7 +1,7 @@
 require 'faker'
 
 5.times do
-  User.create(name: Faker::Name.name, password: "password")
+  User.create(name: Faker::Internet.user_name, password: "password")
 end
 
 6.times do
@@ -10,7 +10,7 @@ end
 
 15.times do
   user =  User.find(User.pluck(:id).sample)
-  question = Post.create(title: Faker::Company.bs, content: Faker::Lorem.paragraph, user: user)
+  question = Post.create(title: Faker::Hacker.say_something_smart, content: Faker::Lorem.paragraph, user: user)
   (rand(4) + 1).times do
     answer_user = User.find(User.pluck(:id).sample)
     answer = question.answers.create(content: Faker::Lorem.paragraph, user: answer_user)
