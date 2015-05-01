@@ -1,1 +1,5 @@
-<%= render partial: "question", collection: @questions %>
+<%= link_to "Ask Question", new_question_path, class: 'btn btn-primary' %><br>
+<h2>Top Questions</h2>
+<div class="question-list">
+  <%= render partial: "question_title", collection: @questions, as: :question %>
+</div>
