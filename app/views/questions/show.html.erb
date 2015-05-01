@@ -1,1 +1,5 @@
-<%= render "question" %>
+<div class="container">
+  <%= @question.title %><br>
+  <%= @question.content %>
+</div>
+<%= link_to "Edit", edit_question_path %>
