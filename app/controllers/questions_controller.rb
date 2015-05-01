@@ -4,4 +4,23 @@ class QuestionsController < ApplicationController
     @questions = Post.where(question_id: nil)
   end
 
+  def new
+    @question = Post.new
+  end
+
+  def create
+    question = Post.new(question_params)
+    if question.save
+      redirect_to root_path
+    else
+      redirect_to new_question_path
+    end
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :content)
+  end
+
 end
