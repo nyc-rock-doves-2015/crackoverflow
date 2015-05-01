@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
       self.reputation += 1
       self.user.reputation += 1 
     else
-      self.reputation += 1
+      self.reputation -= 1
       self.user.reputation -= 1
     end
     self.save
