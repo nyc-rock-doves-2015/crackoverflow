@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def upvote
-    if vote_doesnt_exist?
+    if current_user && vote_doesnt_exist?
       create_vote(true)
       current_post.update_reputation("up")
     end
@@ -9,7 +9,7 @@ class VotesController < ApplicationController
   end
 
   def downvote
-    if vote_doesnt_exist?
+    if current_user && vote_doesnt_exist? 
       create_vote(false)
       current_post.update_reputation("down")
     end
