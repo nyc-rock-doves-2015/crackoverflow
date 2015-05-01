@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
   resources :users
 
+  post 'upvote', to: 'votes#upvote'
+  post 'downvote', to: 'votes#downvote'
+
   root to: 'questions#index'
 
   # Example resource route with options:
