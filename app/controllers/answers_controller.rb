@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   def new
-    @question = Question.find(:id)
-    @answer = Answer.new
+    @question = Post.find(params[:id])
+    @answer = @question.answers.build
   end
 
   def create
