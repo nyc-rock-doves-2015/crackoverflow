@@ -24,10 +24,13 @@ class Post < ActiveRecord::Base
   def update_reputation(dir)
     if dir == "up"
       self.reputation += 1
+      self.user.reputation += 1 
     else
-      self.reputation -= 1
+      self.reputation += 1
+      self.user.reputation -= 1
     end
     self.save
+    self.user.save
   end
 
   def age
