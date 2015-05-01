@@ -12,7 +12,8 @@ class QuestionsController < ApplicationController
 
   def create
     question = Post.new(question_params)
-    if question.save
+    question.user = current_user
+    if current_user && question.save
       redirect_to root_path
     else
       redirect_to new_question_path
