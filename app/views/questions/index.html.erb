@@ -1,2 +1,4 @@
-<%= link_to "Ask Question", new_question_path %><br>
-<%= render partial: "question_title", collection: @questions, as: :question %>
+<div class="container">
+  <%= link_to "Ask Question", new_question_path %><br>
+  <%= render partial: "question_title", collection: @questions, as: :question %>
+</div>
