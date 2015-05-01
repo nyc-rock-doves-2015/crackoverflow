@@ -1,0 +1,14 @@
+<div id="signin">
+<h1>Sign Up</h1>
+
+  <%= form_for @user, url: sessions_path do |f| %>
+    <%= f.label :name, "Username:" %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :password, "Password:" %><br>
+    <%= f.password_field :password %><br>
+    <%= f.submit 'Sign In' %>
+
+    <%= get_flash %>
+  <% end %>
+
+</div>
