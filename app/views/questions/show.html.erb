@@ -7,8 +7,8 @@
 <br>
 <%= link_to "Edit", edit_question_path %>
 <%= link_to "Delete", question_path, method: :delete %>
-<%= link_to "upvote"  %>
-<%= link_to "downvote"  %>
+<%= link_to "upvote", question_upvote_path(@question), method: :post %>
+<%= link_to "downvote", question_downvote_path(@question), method: :post %>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h5>Comments</h5>

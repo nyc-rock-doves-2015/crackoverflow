@@ -19,4 +19,12 @@ class Post < ActiveRecord::Base
     self.tags.map(&:name).join(", ")
   end
 
+  def update_reputation(dir)
+    if dir == "up"
+      self.reputation += 1 
+    else
+      self.reputation -= 1
+    end
+    self.save
+  end
 end

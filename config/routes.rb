@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers, except: :new
+    post 'upvote', to: 'votes#upvote'
+    post 'downvote', to: 'votes#downvote'
   end
 
   resources :tags, only: :create
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
   resources :users
+
 
   root to: 'questions#index'
 
