@@ -1,9 +1,26 @@
-<%= form_for @question, url: questions_path, as: :question do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
-  <%= f.label :content %>
-  <%= f.text_area :content %><br>
-  <%= f.label :tags %>
-  <%= f.text_field :all_tags, placeholder: "Tags separated with commas" %><br>
-  <%= f.submit "Post your question" %>
+<%= form_for @question, url: questions_path, as: :question, html: {class: 'form-horizontal'} do |f| %>
+  <fieldset>
+    <legend>New Question</legend>
+    <div class="form-group">
+      <%= f.label :title, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :content, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :content, class: 'form-control question-textarea' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :tags, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :all_tags, placeholder: "Tags separated with commas", class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Post your question", class: 'btn btn-success question-btn' %>
+    </div>
+  </fieldset>
 <% end %>
