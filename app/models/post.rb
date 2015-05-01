@@ -23,10 +23,24 @@ class Post < ActiveRecord::Base
 
   def update_reputation(dir)
     if dir == "up"
-      self.reputation += 1 
+      self.reputation += 1
     else
       self.reputation -= 1
     end
     self.save
   end
+
+  def age
+    age_seconds = Time.now - created_at
+    if age_seconds < 60
+      "#{age_seconds.round} seconds"
+    elsif age_seconds < 3600
+      "#{(age_seconds/60).round} minutes"
+    elsif age_seconds < 5400
+      "1 hour"
+    else
+      "#{(age_seconds/3600).round} hours"
+    end
+  end
+
 end

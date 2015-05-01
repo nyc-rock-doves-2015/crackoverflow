@@ -17,3 +17,11 @@
 .question-textarea {
   height: 100px;
 }
+
+.question-title {
+  font-size: 20px;
+}
+
+.question-container {
+  border-top: 1px solid gray;
+}

@@ -9,3 +9,7 @@
 .question-textarea {
   height: 100px;
 }
+
+.question-title {
+  font-size: 24px;
+}

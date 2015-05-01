@@ -1,1 +1,17 @@
-<%= link_to question.title, question_path(question) %><br>
+<div class="question-container">
+  <div class="question-title">
+    <%= link_to question.title, question_path(question) %>
+  </div>
+  <div class="question-post-info">
+    <div class="row">
+      <div class="col-md-4">
+        <% question.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
+      <div class="col-md-4 col-md-offset-4 text-right">
+        asked <%= question.age %> ago <%= question.user.name %> <%= question.user.reputation %>
+      </div>
+    </div>
+  </div>
+</div>
