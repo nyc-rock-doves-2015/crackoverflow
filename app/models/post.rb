@@ -6,4 +6,14 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :answers, class_name: "Post", foreign_key: "question_id"
   belongs_to :question, class_name: "Post"
+
+  def all_tags=(name)
+    self.tags = names.split(", ").map do |name|
+      Tag.where(name: name.strip).first_or_create!
+    end
+  end
+
+  def all_tags
+    self.tags.map(&:name).join(", ")
+  end
 end
