@@ -1,6 +1,6 @@
 <h3>
 <% if current_user %>
-  Welcome, <em><%= current_user.name %></em>
+  Welcome, <em><%= link_to current_user.name, user_path(current_user.id)%></em>
    | <%= link_to 'Sign Out', {action: :destroy, controller: :sessions}, method: :delete, data: {confirm: "Are you sure?"}%>
 <% else %>
   <%= link_to 'Sign In', new_sessions_path %>
