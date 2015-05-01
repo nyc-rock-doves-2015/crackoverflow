@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Post.find(params[:id])
-    @answer = @question.answers.build
+    @answer = @question.answers.new
   end
 
   private

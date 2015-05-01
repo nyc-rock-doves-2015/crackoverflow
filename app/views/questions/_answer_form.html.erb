@@ -1,5 +1,5 @@
-<%= form_for @answer, url: {action: "create"} do |f| %>
+<%= form_for [@question, @answer], url: question_answers_path(@question) do |f| %>
   <%= f.label "Answer this question" %><br>
-  <%= f.text_area :content %><br>
+  <%= f.text_area :content %>
   <%= f.submit "submit" %>
 <% end %>
