@@ -20,9 +20,23 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to question_path
+    else
+      redirect_to edit_question_path
+    end
+  end
+
+  def destroy
+    @question.destroy
+    redirect_to root_path
   end
 
   private
