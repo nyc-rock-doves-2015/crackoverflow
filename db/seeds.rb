@@ -8,8 +8,6 @@ end
   Tag.create(name: Faker::Hacker.adjective)
 end
 
-# User.create(name: "ben", password: "test")
-
 15.times do
   user =  User.find(User.pluck(:id).sample)
   question = Post.create(title: Faker::Company.bs, content: Faker::Lorem.paragraph, user: user)
@@ -20,6 +18,22 @@ end
       comment_ans_user = User.find(User.pluck(:id).sample)
       answer.comments.create(content: Faker::Lorem.sentence, user: comment_ans_user)
     end
+    (rand(9) + 1).times do
+      rand(2) == 0 ? (vote = true) : (vote = false)
+      post_vote_user = User.find(User.pluck(:id).sample)
+      curr_vote = answer.post_votes.create(user: post_vote_user, vote: vote)
+      if curr_vote.vote
+        answer.reputation += 1
+        answer.user.reputation += 1
+        answer.save
+        answer.user.save
+      else
+        answer.reputation -= 1
+        answer.user.reputation -= 1
+        answer.save
+        answer.user.save
+      end
+    end
   end
   (rand(3) + 1).times do
     comment_quest_user = User.find(User.pluck(:id).sample)
@@ -29,15 +43,19 @@ end
     question.tags << Tag.find(Tag.pluck(:id).sample)
   end
   (rand(9) + 1).times do
-    rand(1) == 0 ? (vote = true) : (vote = false)
+    rand(2) == 0 ? (vote = true) : (vote = false)
     post_vote_user = User.find(User.pluck(:id).sample)
-    question.post_votes.create(user: post_vote_user, vote: vote)
+    curr_vote = question.post_votes.create(user: post_vote_user, vote: vote)
+    if curr_vote.vote
+      question.reputation += 1
+      question.user.reputation += 1
+      question.save
+      question.user.save
+    else
+      question.reputation -= 1
+      question.user.reputation -= 1
+      question.save
+      question.user.save
+    end
   end
 end
-# Post.create(title: "blah", content: "laskdfj", user_id: 1)
-# Post.create(title: "answer", content: "answer", user_id: 1, question_id: 1)
-# Comment.create(content:"question", post_id: 1, user_id: 1)
-# Comment.create(content:"question", post_id: 2, user_id: 1)
-# Tag.create(name: "tag")
-# PostTag.create(post_id: 1, tag_id: 1)
-# PostVote.create(post_id: 1, user_id: 1, vote: true)
