@@ -25,3 +25,8 @@
 .question-container {
   border-top: 1px solid gray;
 }
+
+.question-badge {
+  font-size: 19px;
+  margin-top: 3px;
+}
