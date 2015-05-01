@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :tags, only: :create
   resources :post_votes, only: [:create, :update]
   resources :comments, only: [:create, :update, :destroy]
-  resource :session, only: [:new, :create, :destroy]
+  resource :sessions, only: [:new, :create, :destroy]
   resources :users
 
   root to: 'questions#index'
