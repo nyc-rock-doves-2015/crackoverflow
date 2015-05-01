@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :answers, class_name: "Post", foreign_key: "question_id"
   belongs_to :question, class_name: "Post"
+  has_many :favorites
+  has_many :favorited_users, through: :favorites, source: :user
 
   validates :content, presence: true
 
