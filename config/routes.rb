@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :update, :destroy]
   resource :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :favorites, only: [:create, :destroy]
 
 
   root to: 'questions#index'
