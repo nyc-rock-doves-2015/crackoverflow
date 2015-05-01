@@ -3,5 +3,7 @@
   <%= f.text_field :title %><br>
   <%= f.label :content %>
   <%= f.text_area :content %><br>
+  <%= f.label :tags %>
+  <%= f.text_field :all_tags, placeholder: "Tags separated with commas" %><br>
   <%= f.submit "Post your question" %>
 <% end %>
