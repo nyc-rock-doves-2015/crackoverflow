@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_post
-    Post.find(params[:id])
+    Post.find(params[:question_id])
   end
 
   def current_user
