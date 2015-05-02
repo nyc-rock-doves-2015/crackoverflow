@@ -1,25 +1,29 @@
 <div class="question-container">
   <h2><%= @question.title %></h2>
   <div class="question-id"><%= @question.id %></div>
-  <div class="question-favorite">
-    <% if current_user.favorite_questions.include?(@question) %>
-      <i class="fa fa-star fa-3x favorite-toggle" aria-hidden="true"></i>
-    <% else %>
-      <i class="fa fa-star-o fa-3x favorite-toggle" aria-hidden="true"></i>
-    <% end %>
-    <span class='favorite-count'><%= @question.favorites.count %></span> favorites
+  <div class="row">
+    <div class="question-favorite col-md-1">
+      <%= link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
+      <div class="text-center"><%= @question.reputation %></div>
+      <%= link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
+      <% if current_user.favorite_questions.include?(@question) %>
+        <i class="fa fa-star fa-3x favorite-toggle" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-star-o fa-3x favorite-toggle" aria-hidden="true"></i>
+      <% end %>
+      <span class='favorite-count'><%= @question.favorites.count %></span> favorites
     <%= get_flash %>
+    </div>
+    <div class="question-content col-md-11">
+      <%= @question.content %><br>
+      <% @question.tags.each do |tag| %>
+        <%= link_to "#{tag.name}", tag_path(tag), class: "btn btn-primary btn-xs tag-btn" %>
+      <% end %>
+      <br>
+      <%= link_to "Edit", edit_question_path %>
+      <%= link_to "Delete", question_path, method: :delete %>
+    </div>
   </div>
-  <%= @question.reputation %> reputation<br>
-  <%= @question.content %><br>
-  <% @question.tags.each do |tag| %>
-    <%= tag.name %>
-  <% end %>
-  <br>
-  <%= link_to "Edit", edit_question_path %>
-  <%= link_to "Delete", question_path, method: :delete %>
-  <%= link_to image_tag("upvote.png"), question_upvote_path(@question), method: :post, id: "upvote" %>
-  <%= link_to image_tag("downvote.png"), question_downvote_path(@question), method: :post, id: "downvote" %>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <h5>Comments</h5>
