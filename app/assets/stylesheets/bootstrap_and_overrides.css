@@ -23,7 +23,7 @@
   font-size: 20px;
 }
 
-.question-id {
+.post-id {
   display: none;
 }
 
@@ -86,4 +86,9 @@
 .answer-container {
   border-bottom: 1px solid #d7dbe0;
   margin-bottom: 10px;
+}
+
+.comment-textarea {
+  padding-left: 15px;
+  padding-right: 15px;
 }

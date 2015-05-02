@@ -1,4 +1,5 @@
 <div class="answer-container">
+  <div class="post-id"><%= answer.id %></div>
   <div class="row">
     <div class="answer-user-info col-md-1">
       <div class="vote-container">
@@ -20,6 +21,7 @@
       <% end %>
       <div class="empty-gap"></div>
       <%= link_to "add comment", new_comment_path({post_id: answer.id}), class: "comment-add-link" %>
+      <%= render partial: '/comments/comment_form' %>
       <div class="empty-gap"></div>
     </div>
   </div>

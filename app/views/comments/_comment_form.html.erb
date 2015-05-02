@@ -1,11 +1,10 @@
-<%= form_for :comment, html: {class: 'form-horizontal'} do |f| %>
+<%= form_for :comment, html: {class: 'form-horizontal comment-new-form'} do |f| %>
   <fieldset>
     <div class="form-group">
-      <%= f.label :content, class: 'control-label'%>
-      <div class="controls">
-        <%= f.text_area :content, class: 'form-control' %>
+      <div class="controls comment-textarea">
+        <%= f.text_area :content, class: 'form-control comment-new-content' %>
       </div>
     </div>
-    <%= f.submit "Submit", class: 'btn btn-primary' %>
+    <%= f.submit "post comment", class: 'btn btn-primary btn-sm' %>
   </fieldset>
 <% end %>
