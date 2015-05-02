@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
     self.posts.where(question_id: nil)
   end
 
+  def my_answers
+    self.posts.where("question_id > ?", 0)
+  end
+
 end
