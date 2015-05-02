@@ -9,8 +9,8 @@
 <br>
 <%= link_to "Edit", edit_question_path %>
 <%= link_to "Delete", question_path, method: :delete %>
-<%= link_to image_tag("upvote.png"), question_upvote_path(@question), method: :post %>
-<%= link_to image_tag("downvote.png"), question_downvote_path(@question), method: :post %>
+<%= link_to image_tag("upvote.png"), question_upvote_path(@question), method: :post, id: "upvote" %>
+<%= link_to image_tag("downvote.png"), question_downvote_path(@question), method: :post, id: "downvote" %>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h5>Comments</h5>
@@ -21,22 +21,14 @@
   </div>
 </div>
 
-<h3><%= @question.answers.count %> Answers</h3>
+<h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>
 <% @question.answers.each do |answer| %>
   <% next if answer.content.nil? %>
   <hr>
-  <%= answer.reputation %> reputation<br>
-  <%= answer.content %>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h5>Comments</h5>
-      <% answer.comments.each do |comment| %>
-        <%= comment.content %> - <%= comment.user.name %><br>
-      <% end %>
-      <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
-      <br>
-    </div>
+  <div id="answer">
+    <%= render partial: 'answer', locals: {answer: answer} %>
   </div>
 <% end %>
 
 <%= render 'answer_form' %>
+>>>>>>> development

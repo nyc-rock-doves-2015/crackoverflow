@@ -1,0 +1,4 @@
+<h2>Tagged Questions: <%= @tag.name %></h2>
+<div class="question-list">
+  <%= render partial: "questions/question_title", collection: @questions, as: :question %>
+</div>
