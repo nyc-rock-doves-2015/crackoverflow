@@ -7,6 +7,7 @@ class AnswersController < ApplicationController
   def create
     question = Post.find(params[:question_id])
     answer = question.answers.build(answer_params)
+    answer.user = current_user
     if answer.save
       render partial: "questions/answer", layout: false, locals: {answer: answer}
     else

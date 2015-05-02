@@ -3,10 +3,10 @@
   <div class="question-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <div class="question-vote">
-        <%= link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
-        <div class="text-center"><%= @question.reputation %></div>
-        <%= link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
+      <div class="vote-container">
+        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, class: "vote-link" %>
+        <div class="reputation text-center"><%= @question.reputation %></div>
+        <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, class: "vote-link" %>
       </div>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">

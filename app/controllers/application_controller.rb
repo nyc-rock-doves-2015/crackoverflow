@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = msg
   end
 
-  def current_post
-    Post.find(params[:question_id])
-  end
-
   def current_user
     session[:user_id] ? User.find(session[:user_id]) : nil
   end
