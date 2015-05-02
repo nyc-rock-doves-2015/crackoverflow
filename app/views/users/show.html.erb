@@ -1,11 +1,36 @@
-<h2><%= @user.name %></h2>
+<div class='container'>
+  <table class="table table-striped">
+    <tr>
+      <th><span class="badge badge-info"><%= @user.reputation %></span></th>
+      <th><%= @user.name %></th>
+    </tr>
+  </table>
 
-<h4>My Questions</h4>
-<% @user.my_questions.each do |question| %>
-  <%= link_to question.title, question_path(question.id) %><br>
-<% end %>
+  <table class="table table-striped">
+    <tr>
+     <th></th>
+      <th>My Questions</th>
+    </tr>
+    <% @user.my_questions.each do |question| %>
+    <tr>
+      <th scope="row"><span class="badge badge-info"><%= question.reputation %></span></td>
+      <td><%= link_to question.title, question_path(question.id) %></td>
+    </tr>
+    <% end %>
+  </table>
 
-<h4>My Favorites</h4>
-<% @user.favorite_questions do |favorite| %>
-  <%= link_to favorite.title, question_path(favorite.id) %><br>
-<% end %>
+  <% if current_user == @user %>
+    <table class='table table-striped'>
+      <tr>
+        <th></th>
+        <th>My Favorites</th>
+      </tr>
+      <% @user.favorite_questions.each do |favorite| %>
+      <tr>
+        <th scope="row"><span class="badge badge-info"><%= favorite.reputation %></span></td>
+        <td><%= link_to favorite.title, question_path(favorite.id) %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
