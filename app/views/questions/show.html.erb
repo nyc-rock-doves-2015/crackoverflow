@@ -15,16 +15,20 @@
   <div class="col-md-10 col-md-offset-1">
     <h5>Comments</h5>
     <% @question.comments.each do |comment| %>
-      <%= comment.content %> - <%= comment.user.name %>
+      <%= comment.content %> - <%= comment.user.name %><br>
     <% end %>
+    <%= link_to "add comment", {action: :new, controller: :comments, post_id: @question.id} %>
   </div>
 </div>
-<%= render 'answer_form' %>
 
-  <h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>
-  <% @question.answers.each do |answer| %>
-    <% next if answer.content.nil? %>
-    <div id="answer">
-      <%= render partial: 'answer', locals: {answer: answer} %>
-    </div>
+<h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>
+<% @question.answers.each do |answer| %>
+  <% next if answer.content.nil? %>
+  <hr>
+  <div id="answer">
+    <%= render partial: 'answer', locals: {answer: answer} %>
+  </div>
 <% end %>
+
+<%= render 'answer_form' %>
+>>>>>>> development

@@ -6,6 +6,7 @@
       <% answer.comments.each do |comment| %>
         <%= comment.content %> - <%= comment.user.name %><br>
       <% end %>
+      <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
       <br>
     </div>
   </div>
