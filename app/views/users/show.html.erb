@@ -20,7 +20,7 @@
     </tr>
     <% @user.my_answers.each do |answer| %>
       <tr>
-        <th></th>
+        <th><span class="badge badge-info"><%= answer.reputation %></span></th>
         <td><%= link_to answer.truncated_content, question_path(answer.question.id) %></td>
       </tr>
     <% end %>
