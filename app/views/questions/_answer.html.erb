@@ -18,7 +18,7 @@
       <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
     <% end %>
     <div class="empty-gap"></div>
-    <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
+    <%= link_to "add comment", new_comment_path({post_id: answer.id}) %>
     <div class="empty-gap"></div>
   </div>
 </div>
