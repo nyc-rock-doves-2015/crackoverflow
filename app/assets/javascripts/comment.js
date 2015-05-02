@@ -8,7 +8,7 @@ $(document).on('ready page:load', function() {
 
     var $target = $(event.target)
     $target.hide();
-    $target.closest('.comment-list').children('.comment-new-form').show();
+    $target.closest('.comment-container').find('.comment-new-form').show();
 
   })
 
@@ -16,14 +16,18 @@ $(document).on('ready page:load', function() {
     event.preventDefault();
 
     var $target = $(event.target);
-    var $answerId = $target.closest('.answer-container').children('.post-id').html()
+    var $answerId = $target.closest('.answer-container').children('.post-id').html();
+    var $commentContainer = $target.closest('.comment-container')
 
     $.ajax({
       url: '/comments',
       type: "post",
       data: $target.serialize() + "&post_id=" + $answerId
     }).done(function(response) {
-
+      $commentContainer.children('.comment-list').append(response);
+      $commentContainer.find('.comment-add-link').show();
+      $target.find('.comment-new-content').val('')
+      $target.hide();
     })
 
   })

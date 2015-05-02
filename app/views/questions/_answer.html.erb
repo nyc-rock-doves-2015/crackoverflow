@@ -15,14 +15,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="comment-list col-md-10 col-md-offset-1">
-      <% answer.comments.each do |comment| %>
-        <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
-      <% end %>
-      <div class="empty-gap"></div>
-      <%= link_to "add comment", new_comment_path({post_id: answer.id}), class: "comment-add-link" %>
-      <%= render partial: '/comments/comment_form' %>
-      <div class="empty-gap"></div>
+    <div class="comment-container col-md-10 col-md-offset-1">
+      <div class="comment-list">
+        <% answer.comments.each do |comment| %>
+          <%= render partial: '/comments/show', locals: {comment: comment} %>
+        <% end %>
+      </div>
+      <div class="comment-new-section">
+        <div class="empty-gap"></div>
+        <%= link_to "add comment", new_comment_path({post_id: answer.id}), class: "comment-add-link" %>
+        <%= render partial: '/comments/comment_form' %>
+        <div class="empty-gap"></div>
+      </div>
     </div>
   </div>
 </div>
