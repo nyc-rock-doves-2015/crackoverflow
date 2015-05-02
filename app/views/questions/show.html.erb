@@ -58,7 +58,7 @@
   <span id="answer-count"><%= @question.answers.count %></span> Answers
   </h3>
 <% @question.answers.each do |answer| %>
-  <div id="answer">
+  <div id="answer" class="post-container">
     <% next if answer.content.nil? %>
     <%= render partial: 'answer', locals: {answer: answer} %>
   </div>

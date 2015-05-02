@@ -16,7 +16,7 @@ $(document).on('ready page:load', function() {
     event.preventDefault();
 
     var $target = $(event.target);
-    var $postId = $target.closest('.post-container').children('.post-id').html();
+    var $postId = $target.closest('.post-container').find('.post-id').html();
     var $commentContainer = $target.closest('.comment-container')
 
     $.ajax({

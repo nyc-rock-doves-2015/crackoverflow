@@ -12,6 +12,7 @@ $(document).on('ready page:load', function () {
         $('#answer').prepend(response);
         $('#answer_content').val('');
         $answercount.html((parseInt($answercount.html()) + 1));
+        $('.comment-new-form').hide()
       });
     } else {
       alert("Answer content cannot be empty");
