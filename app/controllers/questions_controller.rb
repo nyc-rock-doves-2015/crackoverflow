@@ -13,6 +13,8 @@ class QuestionsController < ApplicationController
         question.answers.count == 0
       end
       @questions = unanswered_questions
+    elsif params[:search]
+      @questions = Post.search(params[:search])
     else
       @questions = Post.where(question_id: nil).order(reputation: :desc)
     end

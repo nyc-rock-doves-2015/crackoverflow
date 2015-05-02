@@ -11,6 +11,14 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: true
 
+  def self.search(search)
+    if search
+      Post.where('title LIKE ?', "%#{search}%")
+    else
+      Post.where(question_id: nil).order(reputation: :desc)
+    end
+  end
+
   def all_tags=(names)
     self.tags = names.split(", ").map do |name|
       Tag.where(name: name.strip).first_or_create!

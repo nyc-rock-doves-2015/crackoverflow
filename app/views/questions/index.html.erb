@@ -1,10 +1,17 @@
 <%= link_to "Ask Question", new_question_path, class: 'btn btn-primary' %><br>
 <h2>Top Questions</h2>
+
 <div id='filters'>
   <%= link_to "Newest", {controller: :questions, action: :index, sort_by: 'newest'} %>
   <%= link_to "Oldest", {controller: :questions, action: :index, sort_by: 'oldest'} %>
   <%= link_to "Unanswered", {controller: :questions, action: :index, sort_by: 'unanswered'} %>
 </div>
+
+<%= form_tag questions_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
 <div class="question-list">
   <%= render partial: "question_title", collection: @questions, as: :question %>
 </div>
