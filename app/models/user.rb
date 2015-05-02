@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
     self.posts.where("question_id > ?", 0)
   end
 
-  # def to_param
-  #   "#{id}"-"#{name.parameterize}"
-  # end
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 
 end
