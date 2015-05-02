@@ -32,7 +32,7 @@
           <%= link_to "Delete", question_path, method: :delete %>
         </div>
         <div class="col-md-3 col-md-offset-6">
-          <div>asked <%= @question.created_at %></div>
+          <div>asked <%= @question.created_at.strftime('%b%e at %I:%M') %></div>
           <div><%= @question.user.name %></div>
         </div>
       </div>
@@ -41,7 +41,7 @@
   <div class="row">
     <div class="comment-list col-md-10 col-md-offset-1">
       <% @question.comments.each do |comment| %>
-        <%= comment.content %> - <%= comment.user.name %>
+        <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
       <% end %>
     </div>
   </div>
