@@ -1,5 +1,5 @@
 <div class="question-container">
-  <h2><%= @question.title %></h2>
+  <h2 class="question-show-title"><%= @question.title %></h2>
   <div class="question-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
@@ -19,19 +19,19 @@
       </div>
       <%= get_flash %>
     </div>
-    <div class="question-content col-md-11">
-      <%= @question.content %><br>
+    <div class="question-content col-md-10">
+      <%= @question.content %>
+      <div class="empty-gap"></div>
       <% @question.tags.each do |tag| %>
         <%= link_to "#{tag.name}", tag_path(tag), class: "btn btn-primary btn-xs tag-btn" %>
       <% end %>
-      <br>
+      <div class="empty-gap"></div>
       <%= link_to "Edit", edit_question_path %>
       <%= link_to "Delete", question_path, method: :delete %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h5>Comments</h5>
+    <div class="comment-list col-md-10 col-md-offset-1">
       <% @question.comments.each do |comment| %>
         <%= comment.content %> - <%= comment.user.name %>
       <% end %>
