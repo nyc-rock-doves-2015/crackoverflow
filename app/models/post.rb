@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
 
   def to_param
-    "#{self.id}-#{self.title.parameterize}"
+    "#{self.id}-#{self.title.parameterize}" if self.question == nil
   end
 
   def self.filter(filter)
