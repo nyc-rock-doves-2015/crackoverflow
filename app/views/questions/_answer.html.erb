@@ -1,9 +1,9 @@
 <div class="row">
   <div class="answer-user-info col-md-1">
     <div class="answer-vote">
-      <%# link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
+      <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(answer), method: :post, id: "upvote" %>
       <div class="text-center"><%= answer.reputation %></div>
-      <%# link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
+      <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(answer), method: :post, id: "downvote" %>
     </div>
     <div class="empty-gap"></div>
     <%= get_flash %>

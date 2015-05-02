@@ -4,7 +4,7 @@
   <div class="row">
     <div class="question-user-info col-md-1">
       <div class="question-vote">
-        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, post_id: @question.id, id: "upvote" %>
+        <%= link_to image_tag("upvote.png", class: "center-block", id: "upvote"), upvote_path(@question), method: :post %>
         <div class="text-center"><%= @question.reputation %></div>
         <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, id: "downvote" %>
       </div>
