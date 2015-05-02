@@ -5,15 +5,20 @@ class CommentsController < ApplicationController
   end
 
   def create
-    question_or_answer = Post.find(params[:post_id])
+
+    post = Post.find(params[:post_id])
 
     if current_user
-      Comment.create(content: params[:comment][:content], user_id: current_user.id, post_id: params[:post_id])
+      comment = Comment.create(content: params[:comment][:content], user_id: current_user.id, post: post)
 
-      if question_or_answer.question_id
-        redirect_to question_path(question_or_answer.question)
+      if request.xhr?
+        render partial: 'show', locals: {comment: comment}
       else
-        redirect_to question_path(question_or_answer)
+        if post.question_id
+          redirect_to question_path(post.question)
+        else
+          redirect_to question_path(post)
+        end
       end
     else
       set_flash('You must be logged in')
