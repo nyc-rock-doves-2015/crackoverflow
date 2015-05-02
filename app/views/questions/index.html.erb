@@ -1,5 +1,9 @@
 <%= link_to "Ask Question", new_question_path, class: 'btn btn-primary' %><br>
 <h2>Top Questions</h2>
+<div id='filters'>
+  <%= link_to "Newest", {controller: :questions, action: :index, sort_by: 'newest'} %>
+  <%= link_to "Oldest", {controller: :questions, action: :index, sort_by: 'oldest'} %>
+</div>
 <div class="question-list">
   <%= render partial: "question_title", collection: @questions, as: :question %>
 </div>

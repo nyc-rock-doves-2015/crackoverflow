@@ -3,7 +3,13 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Post.where(question_id: nil).order(reputation: :desc)
+    if params[:sort_by] == 'newest'
+      @questions = Post.where(question_id: nil).order('created_at desc')
+    elsif params[:sort_by] == 'oldest'
+      @questions = Post.where(question_id: nil).order('created_at asc')
+    else
+      @questions = Post.where(question_id: nil).order(reputation: :desc)
+    end
   end
 
   def new
