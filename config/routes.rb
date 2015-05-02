@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :favorites, only: [:create, :destroy]
 
+  get 'suggestion', to: 'questions#load_suggestions'
 
   root to: 'questions#index'
 

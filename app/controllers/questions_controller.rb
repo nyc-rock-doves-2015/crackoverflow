@@ -13,9 +13,19 @@ class QuestionsController < ApplicationController
         question.answers.count == 0
       end
       @questions = unanswered_questions
+    elsif params[:search]
+      @questions = Post.search(params[:search])
     else
       @questions = Post.where(question_id: nil).order(reputation: :desc)
     end
+  end
+
+  def load_suggestions
+    @suggestions = []
+    Post.where(question_id: nil).each do |question|
+      @suggestions << question.title
+    end 
+    render json: @suggestions
   end
 
   def new
