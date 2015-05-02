@@ -5,7 +5,7 @@ class VotesController < ApplicationController
       create_vote(true)
       current_post.update_reputation("up")
     end
-    redirect_to question_path(current_post)
+    return_reputation
   end
 
   def downvote
@@ -13,7 +13,15 @@ class VotesController < ApplicationController
       create_vote(false)
       current_post.update_reputation("down")
     end
-    redirect_to question_path(current_post)
+    return_reputation
+  end
+
+  def return_reputation
+    render partial: 'votes/reputation', layout: false, locals: {post: current_post}
+  end
+
+  def current_post
+    Post.find(params[:format])
   end
 
   def vote_doesnt_exist?

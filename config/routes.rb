@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers, except: :new
-    post 'upvote', to: 'votes#upvote'
-    post 'downvote', to: 'votes#downvote'
   end
+
+  post 'upvote', to: 'votes#upvote'
+  post 'downvote', to: 'votes#downvote'
 
   resources :tags, only: [:create, :show]
   resources :post_votes, only: [:create, :update]

@@ -1,6 +1,12 @@
-<%= form_for @comment do |f| %>
-  <%= f.label :content, "Comment:" %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field_tag "post_id", @question_or_answer.id %>
-  <%= f.submit "Submit" %>
+<%= form_for @comment, html: {class: 'form-horizontal'} do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :content, class: 'control-label'%>
+      <div class="controls">
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+    </div>
+    <%= f.hidden_field_tag "post_id", @question_or_answer.id %>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  </fieldset>
 <% end %>

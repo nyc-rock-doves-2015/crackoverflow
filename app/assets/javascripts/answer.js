@@ -1,16 +1,21 @@
 $(document).on('ready page:load', function () {
-  $('.new_answer').on("submit", function (event) {
+  $('.post-container').on("submit", ".new_answer", function (event) {
     event.preventDefault();
     $answercount = $('#answer-count');
     $target = $(event.target);
-    $.ajax({
-      url: $target.attr("action"),
-      type: "post",
-      data: $target.serialize()
-    }).done(function (response) {
-      $('#answer').prepend(response);
-      $('#answer_content').val('');
-      $answercount.html((parseInt($answercount.html()) + 1));
-    });
+    if($('#answer_content').val() != ""){
+      $.ajax({
+        url: $target.attr("action"),
+        type: "post",
+        data: $target.serialize()
+      }).done(function (response) {
+        $('#answer').prepend(response);
+        $('#answer_content').val('');
+        $answercount.html((parseInt($answercount.html()) + 1));
+        $('.comment-new-form').hide()
+      });
+    } else {
+      alert("Answer content cannot be empty");
+    }
   });
 });

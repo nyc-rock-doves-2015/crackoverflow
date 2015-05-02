@@ -1,24 +1,32 @@
-<div class="row">
-  <div class="answer-user-info col-md-1">
-    <div class="answer-vote">
-      <%= link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
-      <div class="text-center"><%= answer.reputation %></div>
-      <%= link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
+<div class="answer-container">
+  <div class="post-id"><%= answer.id %></div>
+  <div class="row">
+    <div class="answer-user-info col-md-1">
+      <div class="vote-container">
+        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(answer), method: :post, class: "vote-link" %>
+        <div class="reputation text-center"><%= answer.reputation %></div>
+        <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(answer), method: :post, class: "vote-link"%>
+      </div>
+      <div class="empty-gap"></div>
+      <%= get_flash %>
     </div>
-    <div class="empty-gap"></div>
-    <%= get_flash %>
+    <div class="answer-content col-md-10">
+      <%= answer.content %>
+    </div>
   </div>
-  <div class="answer-content col-md-10">
-    <%= answer.content %>
-  </div>
-</div>
-<div class="row">
-  <div class="comment-list col-md-10 col-md-offset-1">
-    <% answer.comments.each do |comment| %>
-      <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
-    <% end %>
-    <div class="empty-gap"></div>
-    <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
-    <div class="empty-gap"></div>
+  <div class="row">
+    <div class="comment-container col-md-10 col-md-offset-1">
+      <div class="comment-list">
+        <% answer.comments.each do |comment| %>
+          <%= render partial: '/comments/show', locals: {comment: comment} %>
+        <% end %>
+      </div>
+      <div class="comment-new-section">
+        <div class="empty-gap"></div>
+        <%= link_to "add comment", new_comment_path({post_id: answer.id}), class: "comment-add-link" %>
+        <%= render partial: '/comments/comment_form' %>
+        <div class="empty-gap"></div>
+      </div>
+    </div>
   </div>
 </div>

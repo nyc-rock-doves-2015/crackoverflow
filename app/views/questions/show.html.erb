@@ -1,12 +1,12 @@
-<div class="question-container">
+<div class="question-container post-container">
   <h2 class="question-show-title"><%= @question.title %></h2>
-  <div class="question-id"><%= @question.id %></div>
+  <div class="question-id post-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <div class="question-vote">
-        <%= link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
-        <div class="text-center"><%= @question.reputation %></div>
-        <%= link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
+      <div class="vote-container">
+        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, class: "vote-link" %>
+        <div class="reputation text-center"><%= @question.reputation %></div>
+        <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, class: "vote-link" %>
       </div>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
@@ -39,17 +39,27 @@
     </div>
   </div>
   <div class="row">
-    <div class="comment-list col-md-10 col-md-offset-1">
-      <% @question.comments.each do |comment| %>
-        <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
-      <% end %>
+    <div class="comment-container col-md-10 col-md-offset-1">
+      <div class="comment-list">
+        <% @question.comments.each do |comment| %>
+          <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
+        <% end %>
+      </div>
+      <div class="comment-new-section">
+        <div class="empty-gap"></div>
+        <%= link_to "add comment", new_comment_path({post_id: @question.id}), class: "comment-add-link" %>
+        <%= render partial: '/comments/comment_form' %>
+        <div class="empty-gap"></div>
+      </div>
     </div>
   </div>
 </div>
-<h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>
+<h3 class="answer-list-title">
+  <span id="answer-count"><%= @question.answers.count %></span> Answers
+  </h3>
 <% @question.answers.each do |answer| %>
-  <% next if answer.content.nil? %>
-  <div id="answer">
+  <div id="answer" class="post-container">
+    <% next if answer.content.nil? %>
     <%= render partial: 'answer', locals: {answer: answer} %>
   </div>
 <% end %>
