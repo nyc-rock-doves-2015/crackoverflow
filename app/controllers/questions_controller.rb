@@ -22,14 +22,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def load_suggestions
-    @suggestions = []
-    Post.where(question_id: nil).each do |question|
-      @suggestions << question.title
-    end 
-    render json: @suggestions
-  end
-
   def new
     @question = Post.new
   end
