@@ -6,12 +6,23 @@
     </tr>
     <tr>
      <th></th>
-      <th>My Questions</th>
+      <th><% if current_user == @user %>My <% end %>Questions</th>
     </tr>
     <% @user.my_questions.each do |question| %>
     <tr>
       <th><span class="badge badge-info"><%= question.reputation %></span></td>
       <td><%= link_to question.title, question_path(question.id) %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th></th>
+      <th><% if current_user == @user %>My <% end %>Answers</th>
+    </tr>
+    <% @user.my_answers.each do |answer| %>
+    <tr>
+      <th></th>
+      <td><%= link_to answer.truncated_content, question_path(answer.id) %></td>
     </tr>
     <% end %>
 
