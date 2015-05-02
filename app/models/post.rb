@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: true
 
+  def to_param
+    "#{self.id}-#{self.title.parameterize}"
+  end
+
   def self.filter(filter)
     if filter == 'newest'
       Post.where(question_id: nil).order('created_at desc')
