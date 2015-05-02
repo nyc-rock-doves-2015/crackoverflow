@@ -30,3 +30,7 @@
   font-size: 19px;
   margin-top: 3px;
 }
+
+.badge-info {
+  background-color: #428bca;
+}
