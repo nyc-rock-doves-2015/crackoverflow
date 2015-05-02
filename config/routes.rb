@@ -4,11 +4,17 @@ Rails.application.routes.draw do
     resources :answers, except: :new
   end
 
-  resources :tags, only: :create
+  post 'upvote', to: 'votes#upvote'
+  post 'downvote', to: 'votes#downvote'
+
+  resources :tags, only: [:create, :show]
   resources :post_votes, only: [:create, :update]
-  resources :comments, only: [:create, :update, :destroy]
-  resource :session, only: [:new, :create, :destroy]
+  resources :comments, except: :index
+  resource :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :favorites, only: [:create, :destroy]
+
+  get 'suggestion', to: 'questions#load_suggestions'
 
   root to: 'questions#index'
 

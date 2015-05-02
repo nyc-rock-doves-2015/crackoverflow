@@ -1,0 +1,110 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+.yield-container {
+  margin-top: 75px;
+  margin-bottom: 45px;
+}
+
+.question-btn {
+  margin-top: 15px;
+}
+
+.question-textarea {
+  height: 100px;
+}
+
+.question-title {
+  font-size: 20px;
+}
+
+.post-id {
+  display: none;
+}
+
+#search-bar{
+  margin-bottom:20px;
+}
+
+#filters {
+  padding-top: 25px;
+}
+
+.question-container {
+  padding-top: 5px;
+  margin-bottom: 7px;
+  border-top: 1px solid #d7dbe0 ;
+}
+
+.question-badge {
+  font-size: 19px;
+  margin-top: 3px;
+}
+
+.badge-info {
+  background-color: #428bca;
+}
+
+.table-header {
+  width: 37px;
+}
+
+.user-name {
+  font-size: 24px;
+}
+
+#font-size {
+  font-size: 24px;
+}
+
+.index-tag {
+  font-size: 12px;
+}
+
+.empty-gap {
+  height: 10px;
+}
+
+.question-show-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d7dbe0;
+}
+
+.question-content {
+  padding: 0;
+}
+
+.answer-content {
+  padding: 0;
+}
+
+.comment-container {
+  border-top: 1px solid #d7dbe0;
+  padding: 0;
+}
+
+.comment-content {
+  border-bottom: 1px solid #d7dbe0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.answer-list-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d7dbe0;
+}
+
+.answer-container {
+  border-bottom: 1px solid #d7dbe0;
+  margin-bottom: 10px;
+}
+
+.comment-textarea {
+  padding-left: 15px;
+  padding-right: 15px;
+}
