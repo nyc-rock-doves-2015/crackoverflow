@@ -3,14 +3,18 @@ $(document).on('ready page:load', function () {
     event.preventDefault();
     $answercount = $('#answer-count');
     $target = $(event.target);
-    $.ajax({
-      url: $target.attr("action"),
-      type: "post",
-      data: $target.serialize()
-    }).done(function (response) {
-      $('#answer').prepend(response);
-      $('#answer_content').val('');
-      $answercount.html((parseInt($answercount.html()) + 1));
-    });
+    if($('#answer_content').val() != ""){
+      $.ajax({
+        url: $target.attr("action"),
+        type: "post",
+        data: $target.serialize()
+      }).done(function (response) {
+        $('#answer').prepend(response);
+        $('#answer_content').val('');
+        $answercount.html((parseInt($answercount.html()) + 1));
+      });
+    } else {
+      alert("Answer content cannot be empty");
+    }
   });
 });
