@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Post.where(question_id: nil)
+    @questions = Post.where(question_id: nil).order(reputation: :desc)
   end
 
   def new

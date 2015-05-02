@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     question = Post.find(params[:question_id])
     answer = question.answers.build(answer_params)
     if answer.save
-      redirect_to question_path(question)
+      render partial: "questions/answer", layout: false, locals: {answer: answer}
     else
       flash[:notice] = "Please submit answer again."
       redirect_to question_path(question)

@@ -24,6 +24,8 @@
 
 .question-container {
   border-top: 1px solid gray;
+  padding-top: 5px;
+  margin-bottom: 7px;
 }
 
 .question-badge {
@@ -45,4 +47,7 @@
 
 #font-size {
   font-size: 24px;
+
+.index-tag {
+  font-size: 12px;
 }
