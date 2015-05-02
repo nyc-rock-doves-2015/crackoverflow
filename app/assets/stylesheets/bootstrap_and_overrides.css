@@ -34,3 +34,7 @@
 .badge-info {
   background-color: #428bca;
 }
+
+.table-header {
+  width: 37px;
+}
