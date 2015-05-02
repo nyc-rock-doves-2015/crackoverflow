@@ -1,20 +1,24 @@
 class CommentsController < ApplicationController
   def new
     @comment = Comment.new
-    @answer = Post.find(params[:answer_id])
+    @question_or_answer = Post.find(params[:post_id])
   end
 
   def create
-    answer = Post.find(params[:answer_id])
-    question = answer.question
+    question_or_answer = Post.find(params[:post_id])
 
-    if current_user # must refactor
-      Comment.create(content: params[:comment][:content], user_id: current_user.id, post_id: params[:answer_id])
+    if current_user
+      Comment.create(content: params[:comment][:content], user_id: current_user.id, post_id: params[:post_id])
+
+      if question_or_answer.question_id
+        redirect_to question_path(question_or_answer.question)
+      else
+        redirect_to question_path(question_or_answer)
+      end
     else
-      set_flash("You must be logged in")
+      set_flash('You must be logged in')
+      redirect_to new_sessions_path
     end
-
-    redirect_to question_path(question)
   end
 
   def show

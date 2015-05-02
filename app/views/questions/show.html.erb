@@ -15,8 +15,9 @@
   <div class="col-md-10 col-md-offset-1">
     <h5>Comments</h5>
     <% @question.comments.each do |comment| %>
-      <%= comment.content %> - <%= comment.user.name %>
+      <%= comment.content %> - <%= comment.user.name %><br>
     <% end %>
+    <%= link_to "add comment", {action: :new, controller: :comments, post_id: @question.id} %>
   </div>
 </div>
 
@@ -32,7 +33,7 @@
       <% answer.comments.each do |comment| %>
         <%= comment.content %> - <%= comment.user.name %><br>
       <% end %>
-      <%= link_to "add comment", {action: :new, controller: :comments, answer_id: answer.id} %> <% get_flash %>
+      <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
       <br>
     </div>
   </div>
