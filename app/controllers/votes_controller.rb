@@ -5,7 +5,7 @@ class VotesController < ApplicationController
       create_vote(true)
       current_post.update_reputation("up")
     end
-    redirect
+    return_reputation
   end
 
   def downvote
@@ -13,15 +13,11 @@ class VotesController < ApplicationController
       create_vote(false)
       current_post.update_reputation("down")
     end
-    redirect
+    return_reputation
   end
 
-  def redirect
-    if current_post.question_id == nil
-      redirect_to question_path(current_post)
-    else
-      redirect_to question_path(current_post.question)
-    end
+  def return_reputation
+    render partial: 'votes/reputation', layout: false, locals: {post: current_post}
   end
 
   def current_post
