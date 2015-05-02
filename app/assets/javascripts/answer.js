@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).on('ready page:load', function () {
   $('.new_answer').on("submit", function (event) {
     event.preventDefault();
     $answercount = $('#answer-count');
