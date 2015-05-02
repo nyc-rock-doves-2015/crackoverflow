@@ -10,7 +10,7 @@
       </div>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
-        <% if current_user.favorite_questions.include?(@question) %>
+        <% if current_user && current_user.favorite_questions.include?(@question) %>
           <i class="fa fa-star fa-3x favorite-toggle" aria-hidden="true"></i>
         <% else %>
           <i class="fa fa-star-o fa-3x favorite-toggle" aria-hidden="true"></i>
