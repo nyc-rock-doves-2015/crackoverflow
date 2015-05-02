@@ -8,6 +8,7 @@
 
 .yield-container {
   margin-top: 75px;
+  margin-bottom: 45px;
 }
 
 .question-btn {
@@ -49,6 +50,10 @@
   padding: 0;
 }
 
+.answer-content {
+  padding: 0;
+}
+
 .comment-list {
   border-top: 1px solid #d7dbe0;
   padding: 0;
@@ -59,3 +64,4 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
