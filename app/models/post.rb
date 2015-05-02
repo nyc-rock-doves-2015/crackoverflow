@@ -48,7 +48,7 @@ class Post < ActiveRecord::Base
   def update_reputation(dir)
     if dir == "up"
       self.reputation += 1
-      self.user.reputation += 1 
+      self.user.reputation += 1
     else
       self.reputation -= 1
       self.user.reputation -= 1
@@ -65,8 +65,12 @@ class Post < ActiveRecord::Base
       "#{(age_seconds/60).round} minutes"
     elsif age_seconds < 5400
       "1 hour"
-    else
+    elsif age_seconds < 86400
       "#{(age_seconds/3600).round} hours"
+    elsif age_seconds < 172800
+      "1 day"
+    else
+      "#{(age_seconds/86400).round} days"
     end
   end
 
