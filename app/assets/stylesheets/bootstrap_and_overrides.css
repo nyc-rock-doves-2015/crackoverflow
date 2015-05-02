@@ -38,6 +38,7 @@
 .question-container {
   padding-top: 5px;
   margin-bottom: 7px;
+  border-top: 1px solid #d7dbe0 ;
 }
 
 .question-badge {
