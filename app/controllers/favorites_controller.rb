@@ -15,7 +15,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    question = Post.find(params[:question_id])
+    p params
+    question = Post.find(params[:id])
     if current_user
       favorite = question.favorites.where(user_id: current_user.id).first
       favorite.destroy if favorite
@@ -23,7 +24,11 @@ class FavoritesController < ApplicationController
       set_flash("Must be logged in")
     end
 
-    redirect_to question_path(question)
+    if request.xhr?
+      render partial: 'favorite_count', locals: {question: question}, layout: false
+    else
+      redirect_to question_path(question)
+    end
   end
 
 end

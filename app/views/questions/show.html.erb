@@ -1,7 +1,15 @@
 <div class="question-container">
   <h2><%= @question.title %></h2>
   <div class="question-id"><%= @question.id %></div>
-  <div class="question-favorite">... has <span class='favorite-count'><%= @question.favorites.count %></span> favorites | <%= link_to "Favorite", favorites_path(question_id: @question.id), method: :post, class: "favorite-toggle" %> | <%= link_to "Undo", favorite_path(question_id: @question.id), method: :delete %> <%= get_flash %></div>
+  <div class="question-favorite">
+    <% if current_user.favorite_questions.include?(@question) %>
+      <i class="fa fa-star fa-3x favorite-toggle" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-star-o fa-3x favorite-toggle" aria-hidden="true"></i>
+    <% end %>
+    <span class='favorite-count'><%= @question.favorites.count %></span> favorites
+    <%= get_flash %>
+  </div>
   <%= @question.reputation %> reputation<br>
   <%= @question.content %><br>
   <% @question.tags.each do |tag| %>
