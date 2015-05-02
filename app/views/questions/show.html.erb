@@ -1,6 +1,5 @@
 <h2><%= @question.title %></h2>
-<p>... has <%= @question.favorites.count %> favorites | <%= link_to "Favorite", {action: :create, controller: :favorites, question_id: @question.id}, method: :post %> | <%= link_to "Undo", {action: :destroy, controller: :favorites, question_id: @question.id}, method: :delete %> <%= get_flash %></p>
-
+<div class="question-favorite">... has <%= @question.favorites.count %> favorites | <%= link_to "Favorite", favorites_path(question_id: @question.id), method: :post, class: "favorite-toggle" %> | <%= link_to "Undo", favorite_path(question_id: @question.id), method: :delete %> <%= get_flash %></div>
 <%= @question.reputation %> reputation<br>
 <%= @question.content %><br>
 <% @question.tags.each do |tag| %>
