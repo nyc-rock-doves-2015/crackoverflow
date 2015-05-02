@@ -14,6 +14,9 @@
   font-size: 24px;
 }
 
+.question-id {
+  display: none;
+}
 #search-bar{
   margin-bottom:20px;
 }
