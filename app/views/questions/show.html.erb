@@ -1,22 +1,24 @@
-<h2><%= @question.title %></h2>
-<div class="question-favorite">... has <%= @question.favorites.count %> favorites | <%= link_to "Favorite", favorites_path(question_id: @question.id), method: :post, class: "favorite-toggle" %> | <%= link_to "Undo", favorite_path(question_id: @question.id), method: :delete %> <%= get_flash %></div>
-<%= @question.reputation %> reputation<br>
-<%= @question.content %><br>
-<% @question.tags.each do |tag| %>
-  <%= tag.name %>
-<% end %>
-<br>
-<%= link_to "Edit", edit_question_path %>
-<%= link_to "Delete", question_path, method: :delete %>
-<%= link_to image_tag("upvote.png"), question_upvote_path(@question), method: :post, id: "upvote" %>
-<%= link_to image_tag("downvote.png"), question_downvote_path(@question), method: :post, id: "downvote" %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <h5>Comments</h5>
-    <% @question.comments.each do |comment| %>
-      <%= comment.content %> - <%= comment.user.name %><br>
-    <% end %>
-    <%= link_to "add comment", {action: :new, controller: :comments, post_id: @question.id} %>
+<div class="question-container">
+  <h2><%= @question.title %></h2>
+  <div class="question-id"><%= @question.id %></div>
+  <div class="question-favorite">... has <span class='favorite-count'><%= @question.favorites.count %></span> favorites | <%= link_to "Favorite", favorites_path(question_id: @question.id), method: :post, class: "favorite-toggle" %> | <%= link_to "Undo", favorite_path(question_id: @question.id), method: :delete %> <%= get_flash %></div>
+  <%= @question.reputation %> reputation<br>
+  <%= @question.content %><br>
+  <% @question.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+  <br>
+  <%= link_to "Edit", edit_question_path %>
+  <%= link_to "Delete", question_path, method: :delete %>
+  <%= link_to image_tag("upvote.png"), question_upvote_path(@question), method: :post, id: "upvote" %>
+  <%= link_to image_tag("downvote.png"), question_downvote_path(@question), method: :post, id: "downvote" %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h5>Comments</h5>
+      <% @question.comments.each do |comment| %>
+        <%= comment.content %> - <%= comment.user.name %>
+      <% end %>
+    </div>
   </div>
 </div>
 <h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>

@@ -6,12 +6,14 @@ $(document).on('ready page:load', function() {
 
     $target = $(event.target)
 
-    // $.ajax({
-    //   url: '/favorites', 
-    //   type: "POST",
-    //   data: {question_id: }
-
-    $target.hide();
+    $.ajax({
+      url: '/favorites', 
+      type: "POST",
+      data: {question_id: $('.question-id').html()}
+    }).done(function(response) {
+      $target.hide();
+      $('.favorite-count').html(response);
+    })
   })
 
 })

@@ -7,7 +7,11 @@ class FavoritesController < ApplicationController
       set_flash("Must be logged in")
     end
 
-    redirect_to question_path(@question)
+    if request.xhr?
+      render partial: 'favorite_count', locals: {question: @question}, layout: false
+    else
+      redirect_to question_path(@question)
+    end
   end
 
   def destroy
