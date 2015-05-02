@@ -1,0 +1,31 @@
+<div class='container'>
+  <table class='table table-striped'>
+    <tr>
+      <th class='table-header'><span id='font-size' class="badge badge-info"><%= @user.reputation %></span></th>
+      <th class="user-name"><%= @user.name %></th>
+    </tr>
+    <tr>
+     <th></th>
+      <th>My Questions</th>
+    </tr>
+    <% @user.my_questions.each do |question| %>
+    <tr>
+      <th><span class="badge badge-info"><%= question.reputation %></span></td>
+      <td><%= link_to question.title, question_path(question.id) %></td>
+    </tr>
+    <% end %>
+
+    <% if current_user == @user %>
+      <tr>
+        <th></th>
+        <th>My Favorites</th>
+      </tr>
+      <% @user.favorite_questions.each do |favorite| %>
+        <tr>
+          <th><span class="badge badge-info"><%= favorite.reputation %></span></td>
+          <td><%= link_to favorite.title, question_path(favorite.id) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

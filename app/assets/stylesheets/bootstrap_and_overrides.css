@@ -46,6 +46,21 @@
   margin-top: 3px;
 }
 
+.badge-info {
+  background-color: #428bca;
+}
+
+.table-header {
+  width: 37px;
+}
+
+.user-name {
+  font-size: 24px;
+}
+
+#font-size {
+  font-size: 24px;
+
 .index-tag {
   font-size: 12px;
 }

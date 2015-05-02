@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
   has_many :post_votes
   has_many :favorites
   has_many :favorite_questions, through: :favorites, source: :post
+
+  def my_questions
+    self.posts.where(question_id: nil)
+  end
+
 end
