@@ -24,7 +24,7 @@
             <% end %>
           </div>
           <div class="col-md-4 col-md-offset-4 text-right">
-            asked <%= question.age %> ago <%= question.user.name %> <%= question.user.reputation %>
+            asked <%= question.age %> ago <%= link_to question.user.name, user_path(question.user) %> <%= question.user.reputation %>
           </div>
         </div>
       </div>

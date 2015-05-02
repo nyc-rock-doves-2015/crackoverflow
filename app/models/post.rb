@@ -70,4 +70,9 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def truncated_content
+    word_arr = self.content.split(' ')
+    word_arr.count > 13 ? word_arr.slice(0, 13).push('...').join(' ') : self.content
+  end
+
 end
