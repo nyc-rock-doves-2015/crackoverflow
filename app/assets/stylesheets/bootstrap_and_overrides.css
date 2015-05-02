@@ -23,6 +23,18 @@
   font-size: 20px;
 }
 
+.question-id {
+  display: none;
+}
+
+#search-bar{
+  margin-bottom:20px;
+}
+
+#filters {
+  padding-top: 25px;
+}
+
 .question-container {
   padding-top: 5px;
   margin-bottom: 7px;
@@ -65,3 +77,12 @@
   padding-right: 15px;
 }
 
+.answer-list-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d7dbe0;
+}
+
+.answer-end {
+  border-bottom: 1px solid #d7dbe0;
+  margin-bottom: 10px;
+}

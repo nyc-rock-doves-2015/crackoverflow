@@ -46,10 +46,12 @@
     </div>
   </div>
 </div>
-<h3><span id="answer-count"><%= @question.answers.count %></span> Answers</h3>
+<h3 class="answer-list-title">
+  <span id="answer-count"><%= @question.answers.count %></span> Answers
+</h3>
 <% @question.answers.each do |answer| %>
   <div id="answer">
-  <% next if answer.content.nil? %>
+    <% next if answer.content.nil? %>
     <%= render partial: 'answer', locals: {answer: answer} %>
   </div>
 <% end %>
