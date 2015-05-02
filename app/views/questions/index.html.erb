@@ -1,5 +1,20 @@
 <%= link_to "Ask Question", new_question_path, class: 'btn btn-primary' %><br>
 <h2>Top Questions</h2>
+
+<div class="row">
+  <%= form_tag questions_path, :method => 'get', id: "search-bar", class: 'col-md-3' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil, class: 'btn btn-primary' %>
+  <% end %>
+
+  <div id='filters' class='col-md-3 col-md-offset-6 text-right bottom-aligned-text'>
+    <%= link_to "All", {controller: :questions, action: :index, sort_by: 'all'} %>
+    <%= link_to "Newest", {controller: :questions, action: :index, sort_by: 'newest'} %>
+    <%= link_to "Oldest", {controller: :questions, action: :index, sort_by: 'oldest'} %>
+    <%= link_to "Unanswered", {controller: :questions, action: :index, sort_by: 'unanswered'} %>
+  </div>
+</div>
+
 <div class="question-list">
   <%= render partial: "question_title", collection: @questions, as: :question %>
 </div>

@@ -11,6 +11,30 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: true
 
+  def self.filter(filter)
+    if filter == 'newest'
+      Post.where(question_id: nil).order('created_at desc')
+    elsif filter == 'oldest'
+      Post.where(question_id: nil).order('created_at asc')
+    elsif filter == 'unanswered'
+      all_questions = Post.where(question_id: nil).order(reputation: :desc)
+      unanswered_questions = all_questions.select do |question|
+        question.answers.count == 0
+      end
+      unanswered_questions
+    else filter == 'all'
+      Post.where(question_id: nil).order(reputation: :desc)
+    end
+  end
+
+  def self.search(search)
+    if search
+      Post.where('title LIKE ?', "%#{search}%")
+    else
+      Post.where(question_id: nil).order(reputation: :desc)
+    end
+  end
+
   def all_tags=(names)
     self.tags = names.split(", ").map do |name|
       Tag.where(name: name.strip).first_or_create!

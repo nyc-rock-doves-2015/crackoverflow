@@ -1,11 +1,24 @@
-<%= answer.reputation %> reputation <br>
-<%= answer.content %>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h5>Comments</h5>
-      <% answer.comments.each do |comment| %>
-        <%= comment.content %> - <%= comment.user.name %><br>
-      <% end %>
-      <br>
+<div class="row">
+  <div class="answer-user-info col-md-1">
+    <div class="answer-vote">
+      <%= link_to image_tag("upvote.png", class: "center-block"), question_upvote_path(@question), method: :post, id: "upvote" %>
+      <div class="text-center"><%= answer.reputation %></div>
+      <%= link_to image_tag("downvote.png", class: "center-block"), question_downvote_path(@question), method: :post, id: "downvote" %>
     </div>
+    <div class="empty-gap"></div>
+    <%= get_flash %>
   </div>
+  <div class="answer-content col-md-10">
+    <%= answer.content %>
+  </div>
+</div>
+<div class="row">
+  <div class="comment-list col-md-10 col-md-offset-1">
+    <% answer.comments.each do |comment| %>
+      <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
+    <% end %>
+    <div class="empty-gap"></div>
+    <%= link_to "add comment", {action: :new, controller: :comments, post_id: answer.id} %>
+    <div class="empty-gap"></div>
+  </div>
+</div>

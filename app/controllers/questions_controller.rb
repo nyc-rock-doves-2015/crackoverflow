@@ -3,7 +3,13 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Post.where(question_id: nil).order(reputation: :desc)
+    if params[:search]
+      @questions = Post.search(params[:search])
+    elsif params[:sort_by]
+      @questions = Post.filter(params[:sort_by])
+    else
+      @questions = Post.where(question_id: nil).order(reputation: :desc)
+    end
   end
 
   def new
