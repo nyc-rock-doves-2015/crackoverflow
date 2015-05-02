@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
 
   def self.search(search)
     if search
-      Post.where('title LIKE ?', "%#{search}%")
+      Post.where('LOWER(title) LIKE ?', "%#{search.downcase}%")
     else
       Post.where(question_id: nil).order(reputation: :desc)
     end

@@ -1,5 +1,5 @@
 $(document).on('ready page:load', function () {
-  $('.vote-link').click(function (event) {
+  $('.post-container').on("click", '.vote-link', function (event) {
     event.preventDefault();
     event.stopPropagation();
 
