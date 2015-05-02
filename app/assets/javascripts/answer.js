@@ -1,4 +1,4 @@
-$('document').ready(function () {
+$(document).ready(function () {
   $('.new_answer').on("submit", function (event) {
     event.preventDefault();
     $target = $(event.target);
