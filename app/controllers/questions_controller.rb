@@ -3,29 +3,13 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:sort_by] == 'newest'
-      @questions = Post.where(question_id: nil).order('created_at desc')
-    elsif params[:sort_by] == 'oldest'
-      @questions = Post.where(question_id: nil).order('created_at asc')
-    elsif params[:sort_by] == 'unanswered'
-      all_questions = Post.where(question_id: nil).order(reputation: :desc)
-      unanswered_questions = all_questions.select do |question|
-        question.answers.count == 0
-      end
-      @questions = unanswered_questions
-    elsif params[:search]
+    if params[:search]
       @questions = Post.search(params[:search])
+    elsif params[:sort_by]
+      @questions = Post.filter(params[:sort_by])
     else
       @questions = Post.where(question_id: nil).order(reputation: :desc)
     end
-  end
-
-  def load_suggestions
-    @suggestions = []
-    Post.where(question_id: nil).each do |question|
-      @suggestions << question.title
-    end 
-    render json: @suggestions
   end
 
   def new
