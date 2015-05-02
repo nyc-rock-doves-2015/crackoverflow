@@ -8,6 +8,7 @@
 
 .yield-container {
   margin-top: 75px;
+  margin-bottom: 45px;
 }
 
 .question-btn {
@@ -23,7 +24,6 @@
 }
 
 .question-container {
-  border-top: 1px solid gray;
   padding-top: 5px;
   margin-bottom: 7px;
 }
@@ -36,3 +36,32 @@
 .index-tag {
   font-size: 12px;
 }
+
+.empty-gap {
+  height: 10px;
+}
+
+.question-show-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d7dbe0;
+}
+
+.question-content {
+  padding: 0;
+}
+
+.answer-content {
+  padding: 0;
+}
+
+.comment-list {
+  border-top: 1px solid #d7dbe0;
+  padding: 0;
+}
+
+.comment-content {
+  border-bottom: 1px solid #d7dbe0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
