@@ -20,7 +20,9 @@
       <div class="row">
         <div class="col-md-3 col-md-offset-9">
           <div>answered <%= answer.created_at.strftime('%b%e at %I:%M') %></div>
-          <div><%= link_to answer.user.name, user_path(answer.user) %> <%= answer.user.reputation %></div>
+          <div>
+            <%= link_to answer.user.name, user_path(answer.user) %> <span class="user-reputation"><%= answer.user.reputation %></span>
+          </div>
         </div>
       </div>
     </div>

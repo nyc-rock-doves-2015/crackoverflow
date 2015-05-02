@@ -37,7 +37,9 @@
         </div>
         <div class="col-md-3 col-md-offset-6">
           <div>asked <%= @question.created_at.strftime('%b%e at %I:%M') %></div>
-          <div><%= link_to @question.user.name, user_path(@question.user) %> <%= @question.user.reputation %></div>
+          <div>
+            <%= link_to @question.user.name, user_path(@question.user) %> <span class="user-reputation"><%= @question.user.reputation %></span>
+          </div>
         </div>
       </div>
     </div>
