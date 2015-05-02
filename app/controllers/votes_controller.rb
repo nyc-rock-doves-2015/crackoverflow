@@ -16,6 +16,10 @@ class VotesController < ApplicationController
     redirect_to question_path(current_post)
   end
 
+  def current_post
+    Post.find(params[:format])
+  end
+
   def vote_doesnt_exist?
     if PostVote.where(user_id: current_user.id, post_id: current_post.id).empty?
       true
