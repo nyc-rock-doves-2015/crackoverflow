@@ -25,14 +25,16 @@ class VotesController < ApplicationController
   end
 
   def vote_doesnt_exist?
-    if PostVote.where(user_id: current_user.id, post_id: current_post.id).empty?
-      true
-    else
-      false
-    end
+    PostVote.where(user_id: current_user.id, post_id: current_post.id).empty?
   end
 
   def create_vote(arg)
     PostVote.create(user_id: current_user.id, post_id: current_post.id, vote: arg)
+  end
+
+  private
+
+  def to_boolean(str)
+    str == 'true'
   end
 end
