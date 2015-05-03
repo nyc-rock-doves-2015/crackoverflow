@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:question) {FactoryGirl.create(:question)}
+
+  it "should be a question" do
+    expect(question.user_id).to eq(1)
+  end
+
 end
