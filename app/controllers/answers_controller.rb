@@ -19,6 +19,10 @@ class AnswersController < ApplicationController
   def show
   end
 
+  def set_best
+    head :ok
+  end
+
   private
 
   def answer_params

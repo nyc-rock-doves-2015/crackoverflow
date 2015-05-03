@@ -67,7 +67,7 @@
 <% @question.answers.each do |answer| %>
   <div id="answer" class="post-container">
     <% next if answer.content.nil? %>
-    <%= render partial: 'answer', locals: {answer: answer} %>
+    <%= render partial: 'answer', locals: {answer: answer, question: @question} %>
   </div>
 <% end %>
 <%= render 'answer_form' %>

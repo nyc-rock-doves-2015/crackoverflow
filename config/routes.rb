@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post 'upvote', to: 'votes#upvote'
   post 'downvote', to: 'votes#downvote'
+  get 'answers/best', to: 'answers#set_best'
 
   resources :tags, only: [:create, :show]
   resources :post_votes, only: [:create, :update]
