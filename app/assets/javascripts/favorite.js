@@ -14,6 +14,8 @@ $(document).on('ready page:load', function() {
       $target.removeClass('fa-star-o');
       $target.addClass('fa-star');
       $('.favorite-count').html(response);
+    }).fail(function() {
+      window.location.replace("/sessions/new")
     })
   })
 

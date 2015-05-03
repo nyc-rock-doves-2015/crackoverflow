@@ -1,8 +1,10 @@
 $(document).on('ready page:load', function () {
-  $('.post-container').on("submit", ".new_answer", function (event) {
+  $('.yield-container').on("submit", ".new_answer", function (event) {
     event.preventDefault();
-    $answercount = $('#answer-count');
-    $target = $(event.target);
+
+    var $answercount = $('#answer-count');
+    var $target = $(event.target);
+
     if($('#answer_content').val() != ""){
       $.ajax({
         url: $target.attr("action"),

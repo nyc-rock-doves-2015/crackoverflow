@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     answer = question.answers.build(answer_params)
     answer.user = current_user
     if answer.save
-      render partial: "questions/answer", layout: false, locals: {answer: answer}
+      render partial: "questions/answer", layout: false, locals: {answer: answer, question: question}
     else
       flash[:notice] = "Please submit answer again."
       redirect_to question_path(question)
