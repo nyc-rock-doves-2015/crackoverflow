@@ -5,7 +5,8 @@ $(document).on('ready page:load', function () {
 
     var $target = $(event.target).parent();
     var $reputation = $target.parent().children('.reputation');
-    var $userReputation = $target.closest('.post-container').find('.user-reputation');
+    var userClass = '.' + $target.closest('.post-container').find('.user-reputation').attr('class').split(' ')[1]
+    var $userReputation = $(userClass)
     var $postId = $target.closest('.post-container').find('.post-id').html();
     var $voteDecision = $target.attr('id') === "upvote-link"
 
