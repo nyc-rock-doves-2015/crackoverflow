@@ -17,6 +17,12 @@
   margin: 0 auto;
 }
 
+.signin-alert {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 .question-btn {
   margin-top: 15px;
 }
