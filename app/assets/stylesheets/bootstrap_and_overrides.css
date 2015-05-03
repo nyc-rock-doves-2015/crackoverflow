@@ -11,6 +11,12 @@
   margin-bottom: 45px;
 }
 
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 .question-btn {
   margin-top: 15px;
 }
