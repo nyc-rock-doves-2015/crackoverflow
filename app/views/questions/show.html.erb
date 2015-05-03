@@ -4,13 +4,13 @@
   <div class="row">
     <div class="question-user-info col-md-1">
       <div class="vote-container">
-      <% if current_user %>
-        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, class: "vote-link" %>
-      <% end %>
+        <% if current_user %>
+          <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, class: "vote-link" %>
+        <% end %>
         <div class="reputation text-center"><%= @question.reputation %></div>
-      <% if current_user %>
-        <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, class: "vote-link" %>
-      <% end %>
+        <% if current_user %>
+          <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, class: "vote-link" %>
+        <% end %>
       </div>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
@@ -32,8 +32,10 @@
       <div class="empty-gap"></div>
       <div class="question-actions-users row">
         <div class="col-md-3">
-          <%= link_to "Edit", edit_question_path %>
-          <%= link_to "Delete", question_path, method: :delete %>
+          <% if current_user && current_user == @question.user %>
+            <%= link_to "Edit", edit_question_path %>
+            <%= link_to "Delete", question_path, method: :delete %>
+          <% end %>
         </div>
         <div class="col-md-3 col-md-offset-6">
           <div>asked <%= @question.created_at.strftime('%b%e at %I:%M') %></div>
