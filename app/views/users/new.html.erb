@@ -1,16 +1,14 @@
 <div id="signup">
-<h1>Sign Up</h1>
-
-  <%= form_for @user do |f| %>
-    <%= f.label :name, "Username:" %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :password, "Password:" %><br>
-    <%= f.password_field :password %><br>
-    <%= f.label :password_confirmation, "Confirm Password:" %><br>
-    <%= f.password_field :password_confirmation %><br>
-    <%= f.submit 'Create Account' %>
-
+  <%= form_for @user, html: { class: "form-signin" } do |f| %>
+    <h2 class="form-signin-heading">Sign Up</h2>
+    <%= f.label :name, "Username:", class: "sr-only" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Username" %>
+    <%= f.label :password, "Password:", class: "sr-only" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    <%= f.label :password_confirmation, "Confirm Password:", class: "sr-only" %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+    <div class="empty-gap"></div>
+    <%= f.submit 'Sign In', class: "btn btn-lg btn-primary btn-block" %>
     <%= get_flash %>
   <% end %>
-
 </div>

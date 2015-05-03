@@ -1,14 +1,12 @@
 <div id="signin">
-<h1>Sign In</h1>
-
-  <%= form_for @user, url: sessions_path do |f| %>
-    <%= f.label :name, "Username:" %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :password, "Password:" %><br>
-    <%= f.password_field :password %><br>
-    <%= f.submit 'Sign In' %>
-
+  <%= form_for @user, url: sessions_path, html: { class: "form-signin" } do |f| %>
+    <h2 class="form-signin-heading">Sign In</h2>
+    <%= f.label :name, "Username:", class: "sr-only" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Username" %>
+    <%= f.label :password, "Password:", class: "sr-only" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    <div class="empty-gap"></div>
+    <%= f.submit 'Sign In', class: "btn btn-lg btn-primary btn-block" %>
     <%= get_flash %>
   <% end %>
-
 </div>
