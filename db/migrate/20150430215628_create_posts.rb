@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content, null: false
       t.integer :reputation, default: 0
+      t.boolean :best, default: false
       t.references :user
       t.references :question
 
