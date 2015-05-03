@@ -13,9 +13,8 @@ $(document).on('ready page:load', function() {
       type: "GET",
       data: {answer_id: $answerId}
     }).done(function(response) {
-      $('.fa-check').removeClass('.toggle-green')
-      $target.addClass('toggle-green');
-      $target.css("color", "green");
+      $('.fa-check').removeClass('green-toggle')
+      $target.addClass('green-toggle');
     }).fail(function() {
       // window.location.replace("/sessions/new")
     })

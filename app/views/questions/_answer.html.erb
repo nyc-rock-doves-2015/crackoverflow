@@ -13,8 +13,8 @@
       </div>
       <div class="empty-gap"></div>
       <div class="answer-best text-center">
-        <% if question.best_answer_id = answer.id %>
-          <i class="fa fa-check fa-3x best-toggle"></i>
+        <% if answer.best %>
+          <i class="fa fa-check fa-3x best-toggle green-toggle"></i>
         <% elsif current_user == question.user %>
           <i class="fa fa-check fa-3x best-toggle"></i>
         <% end %>
