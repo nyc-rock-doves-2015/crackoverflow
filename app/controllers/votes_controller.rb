@@ -18,7 +18,6 @@ class VotesController < ApplicationController
 
   def create_or_update
     if current_user
-      p params
       post = Post.find(params[:post_id])
       vote = PostVote.find_or_create_by(post: post, user: current_user)
       vote_boolean = to_boolean(params[:vote])
