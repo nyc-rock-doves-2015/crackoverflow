@@ -4,11 +4,11 @@
     <div class="answer-user-info col-md-1">
       <div class="vote-container">
         <% if current_user %>
-          <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(answer), method: :post, class: "vote-link" %>
+          <%= link_to image_tag("upvote.png", class: "center-block"), vote_path, method: :post, class: "vote-link", id: "upvote-link" %>
         <% end %>
         <div class="reputation text-center"><%= answer.reputation %></div>
         <% if current_user %>
-          <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(answer), method: :post, class: "vote-link"%>
+          <%= link_to image_tag("downvote.png", class: "center-block"), vote_path, method: :post, class: "vote-link", id: "downvote-link" %>
         <% end %>
       </div>
       <div class="empty-gap"></div>
