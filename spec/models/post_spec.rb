@@ -8,5 +8,4 @@ RSpec.describe Post, type: :model do
     expect(question.user_id).to eq(1)
   end
 
-
 end
