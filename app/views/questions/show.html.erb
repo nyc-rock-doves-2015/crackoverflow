@@ -3,7 +3,7 @@
   <div class="question-id post-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <div class="vote-container">
+      <div class="vote-container text-center">
         <% if current_user %>
           <%= link_to image_tag("upvote.png", class: "center-block"), vote_path, method: :post, class: "vote-link", id: "upvote-link" %>
         <% end %>
@@ -63,8 +63,8 @@
 </div>
 <h3 class="answer-list-title">
   <span id="answer-count"><%= @question.answers.count %></span> Answers
-  </h3>
-<% @question.answers.order(best: :desc).each do |answer| %>
+</h3>
+<% @question.answers.order(best: :desc).order(reputation: :desc).each do |answer| %>
   <div id="answer" class="post-container">
     <% next if answer.content.nil? %>
     <%= render partial: 'answer', locals: {answer: answer, question: @question} %>
