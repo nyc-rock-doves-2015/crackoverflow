@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(version: 20150501185732) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.text     "content",                     null: false
-    t.integer  "reputation",  default: 0
-    t.boolean  "best",        default: false
+    t.text     "content",                        null: false
+    t.integer  "reputation",     default: 0
+    t.integer  "best_answer_id"
+    t.boolean  "best",           default: false
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at"

@@ -6,9 +6,10 @@ $(document).on('ready page:load', function() {
 
     var $target = $(event.target)
     var $answerId = $target.closest('.post-container').find('.post-id').html();
+    var $questionId = $('.question-container').children('.post-id').html();
 
     $.ajax({
-      url: '/answers/best', 
+      url: '/questions/' + $questionId + '/best', 
       type: "GET",
       data: {answer_id: $answerId}
     }).done(function(response) {
@@ -16,7 +17,7 @@ $(document).on('ready page:load', function() {
       $target.addClass('toggle-green');
       $target.css("color", "green");
     }).fail(function() {
-      window.location.replace("/sessions/new")
+      // window.location.replace("/sessions/new")
     })
   })
 
