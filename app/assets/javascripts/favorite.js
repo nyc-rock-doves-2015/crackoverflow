@@ -11,13 +11,11 @@ $(document).on('ready page:load', function() {
       type: "POST",
       data: {question_id: $('.question-id').html()}
     }).done(function(response) {
-      if (response != "signin") {
-        $target.removeClass('fa-star-o');
-        $target.addClass('fa-star');
-        $('.favorite-count').html(response);
-      } else {
-        window.location.replace("/sessions/new")
-      }
+      $target.removeClass('fa-star-o');
+      $target.addClass('fa-star');
+      $('.favorite-count').html(response);
+    }).fail(function() {
+      window.location.replace("/sessions/new")
     })
   })
 
