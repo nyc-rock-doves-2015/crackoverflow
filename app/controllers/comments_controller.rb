@@ -8,7 +8,14 @@ class CommentsController < ApplicationController
 
     post = Post.find(params[:post_id])
 
-    if request.xhr?
+    # Rails has this handy thing here...
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
+
+    if request.xhr? # It's unusual to see this guy in rails code....
       if current_user
         comment = Comment.create(content: params[:comment][:content], user_id: current_user.id, post: post)
         render partial: 'show', locals: {comment: comment}

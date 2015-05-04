@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  MAXIMUM_NUMBER_OF_WORDS_FOR_TRUNCATED_DISPLAY = 13
+
   has_many :comments
   has_many :post_tags
   has_many :tags, through: :post_tags
@@ -15,7 +17,27 @@ class Post < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}" if self.question == nil
   end
 
+  # why not use scopes here?  Such that you could say Post.newest or
+  # Post.unanswered
+  #
+  # If you had those, then you could do something like
+  #
+  # Post.send(params[:type) # just take that ext value in and use it to
+  # retrieve based on the scope.
+  #
+  # def self.newest
+  #   where(question_id: nil).order('created_at desc')
+  # end
+  #
+  # OR there is a Rails thing called a "scope" but that seems to be falling out
+  # of fashion.  it looks like this:
+  #
+  #
+  #  scope :newest, -> { where(question_id: nil).order('created_at desc') }
+  #
+  #
   def self.filter(filter)
+
     if filter == 'newest'
       Post.where(question_id: nil).order('created_at desc')
     elsif filter == 'oldest'
@@ -80,7 +102,7 @@ class Post < ActiveRecord::Base
 
   def truncated_content
     word_arr = self.content.split(' ')
-    word_arr.count > 13 ? word_arr.slice(0, 13).push('...').join(' ') : self.content
+    word_arr.count > MAXIMUM_NUMBER_OF_WORDS_FOR_TRUNCATED_DISPLAY ? word_arr.slice(0, MAXIMUM_NUMBER_OF_WORDS_FOR_TRUNCATED_DISPLAY).push('...').join(' ') : self.content
   end
 
   def get_vote(current_user)

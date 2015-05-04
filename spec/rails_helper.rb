@@ -25,6 +25,10 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  # By putting this here you can say `create(:user, name: "Ben Moriomoto")`
+  # versus having to put FactoryGirl before `create`.
+  config.include FactoryGirl::Syntax::Methods
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
