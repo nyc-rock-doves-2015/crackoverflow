@@ -3,15 +3,7 @@
   <div class="question-id post-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <div class="vote-container text-center">
-        <% if current_user %>
-          <%= link_to image_tag("upvote.png", class: "center-block"), vote_path, method: :post, class: "vote-link", id: "upvote-link" %>
-        <% end %>
-        <div class="reputation text-center"><%= @question.reputation %></div>
-        <% if current_user %>
-          <%= link_to image_tag("downvote.png", class: "center-block"), vote_path, method: :post, class: "vote-link", id: "downvote-link" %>
-        <% end %>
-      </div>
+      <%= render partial: 'vote_buttons', locals: {post: @question} %>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
         <% if current_user && current_user.favorite_questions.include?(@question) %>
