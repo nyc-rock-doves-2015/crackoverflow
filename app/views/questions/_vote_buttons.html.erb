@@ -1,0 +1,17 @@
+<div class="vote-container text-center">
+  <% if current_user %>
+    <% if post.get_vote(current_user) == true %>
+      <i class="fa fa-2x fa-arrow-up vote-link up-toggle" id="upvote-link"></i>
+    <% else %>
+      <i class="fa fa-2x fa-arrow-up vote-link" id="upvote-link"></i>
+    <% end %>
+  <% end %>
+  <div class="reputation text-center"><%= post.reputation %></div>
+  <% if current_user %>
+    <% if post.get_vote(current_user) == false %>
+      <i class="fa fa-2x fa-arrow-down vote-link down-toggle" id="downvote-link"></i>
+    <% else %>
+      <i class="fa fa-2x fa-arrow-down vote-link" id="downvote-link"></i>
+    <% end %>
+  <% end %>
+</div>
