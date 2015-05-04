@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   get 'questions/:id/best', to: 'questions#set_best'
   post 'vote', to: 'votes#create_or_update'
 
-  post 'upvote', to: 'votes#upvote'
-  post 'downvote', to: 'votes#downvote'
-
   resources :tags, only: [:create, :show]
   resources :post_votes, only: [:create, :update]
   resources :comments, except: :index
