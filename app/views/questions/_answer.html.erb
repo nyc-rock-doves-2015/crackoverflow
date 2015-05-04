@@ -2,7 +2,7 @@
   <div class="post-id"><%= answer.id %></div>
   <div class="row">
     <div class="answer-user-info col-md-1">
-      <%= render partial: 'vote_buttons', locals: {post: answer} %>
+      <%= render partial: 'questions/vote_buttons', locals: {post: answer} %>
       <div class="empty-gap"></div>
       <div class="answer-best text-center">
         <% if answer.best %>
