@@ -3,7 +3,7 @@
   <div class="question-id post-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <%= render partial: 'vote_buttons', locals: {post: @question} %>
+      <%= render partial: 'questions/vote_buttons', locals: {post: @question} %>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
         <% if current_user && current_user.favorite_questions.include?(@question) %>
