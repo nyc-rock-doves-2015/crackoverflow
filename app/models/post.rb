@@ -85,7 +85,8 @@ class Post < ActiveRecord::Base
 
   def get_vote(current_user)
     curr_vote = PostVote.find_by(post: self, user: current_user)
-    curr_vote.vote if curr_vote
+    return curr_vote.vote if curr_vote
+    nil
   end
 
 end
