@@ -1,1 +1,1 @@
-<div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
+<div class="comment-content"><%= comment.content %> - <%= link_to comment.user.name, user_path(comment.user) %> <span class="user-reputation post-user-<%= comment.user.id%>"><%= comment.user.reputation %></span></div>

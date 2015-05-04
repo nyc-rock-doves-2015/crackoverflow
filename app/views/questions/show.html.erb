@@ -41,7 +41,7 @@
     <div class="comment-container col-md-10 col-md-offset-1">
       <div class="comment-list">
         <% @question.comments.each do |comment| %>
-          <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
+          <%= render partial: '/comments/show', locals: {comment: comment} %>
         <% end %>
       </div>
       <div class="comment-new-section">
