@@ -17,6 +17,12 @@
   margin: 0 auto;
 }
 
+.signin-alert {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 .question-btn {
   margin-top: 15px;
 }
@@ -114,3 +120,16 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.green-toggle {
+  color: green;
+}
+
+.up-toggle {
+  color: #FF8B60;
+}
+
+.down-toggle {
+  color: #9494FF;
+}
+

@@ -2,17 +2,15 @@
   <div class="post-id"><%= answer.id %></div>
   <div class="row">
     <div class="answer-user-info col-md-1">
-      <div class="vote-container">
-      <% if current_user %>
-        <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(answer), method: :post, class: "vote-link" %>
-      <% end %>
-        <div class="reputation text-center"><%= answer.reputation %></div>
-        <% if current_user %>
-          <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(answer), method: :post, class: "vote-link"%>
+      <%= render partial: 'questions/vote_buttons', locals: {post: answer} %>
+      <div class="empty-gap"></div>
+      <div class="answer-best text-center">
+        <% if answer.best %>
+          <i class="fa fa-check fa-3x best-toggle green-toggle"></i>
+        <% elsif current_user == question.user %>
+          <i class="fa fa-check fa-3x best-toggle"></i>
         <% end %>
       </div>
-      <div class="empty-gap"></div>
-      <%= get_flash %>
     </div>
     <div class="answer-content col-md-10">
       <%= answer.content %>
@@ -21,7 +19,7 @@
         <div class="col-md-3 col-md-offset-9">
           <div>answered <%= answer.created_at.strftime('%b%e at %I:%M') %></div>
           <div>
-            <%= link_to answer.user.name, user_path(answer.user) %> <span class="user-reputation"><%= answer.user.reputation %></span>
+            <%= link_to answer.user.name, user_path(answer.user) %> <span class="user-reputation post-user-<%= answer.user.id%>"><%= answer.user.reputation %></span>
           </div>
         </div>
       </div>

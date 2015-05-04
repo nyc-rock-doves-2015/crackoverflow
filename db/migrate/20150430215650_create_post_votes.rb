@@ -4,7 +4,7 @@ class CreatePostVotes < ActiveRecord::Migration
       t.references :user
       t.references :post
 
-      t.boolean :vote, null: false
+      t.boolean :vote
       t.timestamps
     end
   end
