@@ -46,6 +46,17 @@ class QuestionsController < ApplicationController
     redirect_to root_path
   end
 
+  def set_best
+    question = Post.find(params[:id])
+    if question.best_answer_id
+      Post.find(question.best_answer_id).update(best: false)
+    end
+    best_answer_id = params[:answer_id]
+    question.update(best_answer_id: best_answer_id)
+    Post.find(best_answer_id).update(best: true)
+    head :ok
+  end
+
   private
 
   def set_question

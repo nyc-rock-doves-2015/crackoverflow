@@ -28,8 +28,9 @@ $(document).on('ready page:load', function() {
       $commentContainer.find('.comment-add-link').show();
       $target.find('.comment-new-content').val('')
       $target.hide();
+    }).fail(function() {
+      window.location.replace("/sessions/new")
     })
-
   })
 
 })

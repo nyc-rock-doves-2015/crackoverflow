@@ -41,15 +41,17 @@ ActiveRecord::Schema.define(version: 20150501185732) do
   create_table "post_votes", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
-    t.boolean  "vote",       null: false
+    t.boolean  "vote"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.text     "content",                 null: false
-    t.integer  "reputation",  default: 0
+    t.text     "content",                        null: false
+    t.integer  "reputation",     default: 0
+    t.integer  "best_answer_id"
+    t.boolean  "best",           default: false
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at"

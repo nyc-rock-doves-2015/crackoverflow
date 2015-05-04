@@ -83,4 +83,10 @@ class Post < ActiveRecord::Base
     word_arr.count > 13 ? word_arr.slice(0, 13).push('...').join(' ') : self.content
   end
 
+  def get_vote(current_user)
+    curr_vote = PostVote.find_by(post: self, user: current_user)
+    return curr_vote.vote if curr_vote
+    nil
+  end
+
 end
