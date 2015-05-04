@@ -4,6 +4,7 @@ RSpec.describe Post, type: :model do
 
   let(:user) {FactoryGirl.create(:user)}
   let(:question) {FactoryGirl.create(:question, user_id: user.id)}
+  let(:answer) {FactoryGirl.create(:answer, user_id: user.id, question_id: question.id )}
 
 
   it "should have the last question be on top" do
@@ -24,6 +25,10 @@ RSpec.describe Post, type: :model do
   it "should decrease reputation by 1" do
     question.update_reputation("down")
     expect(question.reputation).to eq(-1)
+  end
+
+  it "should have the question associated with the answer" do
+    expect(answer.question).to eq(question)
   end
 
 end
