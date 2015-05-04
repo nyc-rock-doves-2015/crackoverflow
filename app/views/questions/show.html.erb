@@ -3,15 +3,7 @@
   <div class="question-id post-id"><%= @question.id %></div>
   <div class="row">
     <div class="question-user-info col-md-1">
-      <div class="vote-container">
-        <% if current_user %>
-          <%= link_to image_tag("upvote.png", class: "center-block"), upvote_path(@question), method: :post, class: "vote-link" %>
-        <% end %>
-        <div class="reputation text-center"><%= @question.reputation %></div>
-        <% if current_user %>
-          <%= link_to image_tag("downvote.png", class: "center-block"), downvote_path(@question), method: :post, class: "vote-link" %>
-        <% end %>
-      </div>
+      <%= render partial: 'vote_buttons', locals: {post: @question} %>
       <div class="empty-gap"></div>
       <div class="question-favorite text-center">
         <% if current_user && current_user.favorite_questions.include?(@question) %>
@@ -39,7 +31,7 @@
         <div class="col-md-3 col-md-offset-6">
           <div>asked <%= @question.created_at.strftime('%b%e at %I:%M') %></div>
           <div>
-            <%= link_to @question.user.name, user_path(@question.user) %> <span class="user-reputation"><%= @question.user.reputation %></span>
+            <%= link_to @question.user.name, user_path(@question.user) %> <span class="user-reputation post-user-<%= @question.user.id%>"><%= @question.user.reputation %></span>
           </div>
         </div>
       </div>
@@ -49,7 +41,7 @@
     <div class="comment-container col-md-10 col-md-offset-1">
       <div class="comment-list">
         <% @question.comments.each do |comment| %>
-          <div class="comment-content"><%= comment.content %> - <%= comment.user.name %></div>
+          <%= render partial: '/comments/show', locals: {comment: comment} %>
         <% end %>
       </div>
       <div class="comment-new-section">
@@ -63,8 +55,8 @@
 </div>
 <h3 class="answer-list-title">
   <span id="answer-count"><%= @question.answers.count %></span> Answers
-  </h3>
-<% @question.answers.order(best: :desc).each do |answer| %>
+</h3>
+<% @question.answers.order(best: :desc).order(reputation: :desc).each do |answer| %>
   <div id="answer" class="post-container">
     <% next if answer.content.nil? %>
     <%= render partial: 'answer', locals: {answer: answer, question: @question} %>
